@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-root",
@@ -15,9 +15,13 @@ export class AppComponent implements OnInit {
     /*eslint-env es6*/
     // It's a good idea to wrap keys in quotes to prevent mangling during minification since html references them by name
     this.signupForm = new FormGroup({
-      username: new FormControl(null),
-      email: new FormControl(null),
+      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       gender: new FormControl("male") // default select value
     });
+  }
+
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
