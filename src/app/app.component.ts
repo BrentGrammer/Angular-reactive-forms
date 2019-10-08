@@ -15,8 +15,10 @@ export class AppComponent implements OnInit {
     /*eslint-env es6*/
     // It's a good idea to wrap keys in quotes to prevent mangling during minification since html references them by name
     this.signupForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      userData: new FormGroup({
+        username: new FormControl(null, Validators.required),
+        email: new FormControl(null, [Validators.required, Validators.email])
+      }),
       gender: new FormControl("male") // default select value
     });
   }
